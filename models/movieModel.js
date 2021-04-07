@@ -5,9 +5,20 @@ const movieSchema = new mongoose.Schema({
         type: String,
         required: [true, "A game must have a title."],
     },
-    description: {
-        type: String,
-        required: [true, "A movie must have a description."],
+    description: String,
+    actors: [
+        {
+            type: mongoose.Schema.ObjectId,
+            ref: "MoviePerson",
+        },
+    ],
+    ratingSum: {
+        type: Number,
+        min: 0,
+    },
+    ratingQuantity: {
+        type: Number,
+        min: 0,
     },
 });
 
