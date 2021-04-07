@@ -5,7 +5,7 @@ const reviewSchema = new mongoose.Schema({
         type: String,
     },
     movieID: {
-        type: int,
+        type: Number,
         required: [true, "Review has to belong to the movie"],
     },
 });
