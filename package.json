@@ -1,0 +1,26 @@
+{
+    "name": "moviehubapi",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mskwara/MovieHubAPI.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/mskwara/MovieHubAPI/issues"
+    },
+    "homepage": "https://github.com/mskwara/MovieHubAPI#readme",
+    "dependencies": {
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "mongoose": "^5.12.3",
+        "nodemon": "^2.0.7"
+    }
+}
