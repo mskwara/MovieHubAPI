@@ -1,15 +1,15 @@
 const mongoose = require("mongoose");
 
 const reviewSchema = new mongoose.Schema({
-    review_content: {
+    reviewContent: {
         type: String,
     },
-    FilmID: {
+    movieID: {
         type: int,
-        required: [true, "Comment has to belong to the movie"],
+        required: [true, "Review has to belong to the movie"],
     },
 });
 
-const Movie = mongoose.model("Movie", movieSchema);
+const Review = mongoose.model("Review", movieSchema);
 
-module.exports = Movie;
+module.exports = Review;
