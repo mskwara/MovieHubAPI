@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const movieSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: [true, "A game must have a title."],
+        required: [true, "A movie must have a title."],
     },
     description: String,
     actors: [
@@ -15,10 +15,12 @@ const movieSchema = new mongoose.Schema({
     ratingSum: {
         type: Number,
         min: 0,
+        default: 0,
     },
     ratingQuantity: {
         type: Number,
         min: 0,
+        default: 0,
     },
 });
 

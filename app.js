@@ -1,21 +1,10 @@
 const express = require("express");
+const movieRouter = require("./routers/movieRouter");
 
 const app = express();
 
-// testowy request
+app.use(express.json({ limit: "10kb" }));
 
-app.get("/", (req, res, next) => {
-    res.status(200).json({
-        status: "success",
-        message: "Testowy response",
-    });
-});
-
-app.get("/aaa", (req, res, next) => {
-    res.status(200).json({
-        status: "success",
-        message: "aaaaaaaaaaaaaaa",
-    });
-});
+app.use("/movies", movieRouter);
 
 module.exports = app;
