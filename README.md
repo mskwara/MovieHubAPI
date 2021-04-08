@@ -1,9 +1,9 @@
 # MovieHubAPI
 Studenci:
-Adam Niemiec
-Michał Skwara
-Mikołaj Bul
-Łukasz Stachoń
+Adam Niemiec,
+Michał Skwara,
+Mikołaj Bul,
+Łukasz Stachoń,
 
 Zarys projektu
 Głównym założeniem projektu jest stworzenie aplikacji opartej na bazie filmów i osób kina.
