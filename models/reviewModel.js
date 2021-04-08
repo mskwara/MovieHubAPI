@@ -5,11 +5,11 @@ const reviewSchema = new mongoose.Schema({
         type: String,
     },
     movieID: {
-        type: int,
+        type: Number,
         required: [true, "Review has to belong to the movie"],
     },
 });
 
-const Review = mongoose.model("Review", movieSchema);
+const Review = mongoose.model("Review", reviewSchema);
 
 module.exports = Review;
