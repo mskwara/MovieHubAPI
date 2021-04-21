@@ -68,3 +68,21 @@ exports.deleteMovie = async (req, res, next) => {
         console.log(err);
     }
 };
+
+exports.getTopFiveMovies = async (req, res, next) => {
+    try {
+        const movies = await Movie.find()
+            .sort({
+                ratingAverage: 1,
+            })
+            .limit(5);
+
+        res.status(200).json({
+            status: "success",
+            results: movies.length,
+            movies,
+        });
+    } catch (err) {
+        console.log(err);
+    }
+};

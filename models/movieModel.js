@@ -12,10 +12,12 @@ const movieSchema = new mongoose.Schema({
             ref: "MoviePerson",
         },
     ],
-    ratingSum: {
+    ratingAverage: {
         type: Number,
-        min: 0,
-        default: 0,
+        min: 1,
+        max: 5,
+        default: 4.5,
+        set: (val) => Math.round(val * 10) / 10,
     },
     ratingQuantity: {
         type: Number,
