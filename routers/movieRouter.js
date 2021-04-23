@@ -14,6 +14,6 @@ router
     .patch(movieController.updateMovie)
     .delete(movieController.deleteMovie);
 
-router.route("/topFiveMovies").get(movieController.getTopFiveMovie);
+router.route("/topFiveMovies").get(movieController.getTopFiveMovies);
 
 module.exports = router;
