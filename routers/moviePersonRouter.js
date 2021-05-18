@@ -18,6 +18,4 @@ router
     .route("/role/:role")
     .get(movieController.getPersonsByRole)
 
-//router.route("/top/:quantity").get(movieController.getTopMovies);
-
 module.exports = router;
