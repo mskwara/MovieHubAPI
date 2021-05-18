@@ -15,7 +15,7 @@ router
     .delete(movieController.deleteMoviePerson);
 
 router
-    .route("/MoviePerson/role/:role")
+    .route("/role/:role")
     .get(movieController.getPersonsByRole)
 
 //router.route("/top/:quantity").get(movieController.getTopMovies);
