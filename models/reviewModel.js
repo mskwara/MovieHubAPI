@@ -1,5 +1,5 @@
-import Movie from "./movieModel";
 const mongoose = require("mongoose");
+const Movie = require("./movieModel");
 
 const reviewSchema = new mongoose.Schema({
     reviewContent: {

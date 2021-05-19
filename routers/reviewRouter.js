@@ -1,17 +1,17 @@
 const express = require("express");
-const movieController = require("../controllers/reviewController");
+const reviewController = require("../controllers/reviewController");
 
 const router = express.Router();
 
 router
     .route("/")
-    .get(movieController.getAllReviews)
-    .post(movieController.createReview);
+    .get(reviewController.getAllReviews)
+    .post(reviewController.createReview);
 
 router
     .route("/:reviewID")
-    .get(movieController.getReview)
-    .patch(movieController.updateReview)
-    .delete(movieController.deleteReview);
+    .get(reviewController.getReview)
+    .patch(reviewController.updateReview)
+    .delete(reviewController.deleteReview);
 
 module.exports = router;
