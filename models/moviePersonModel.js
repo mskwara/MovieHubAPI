@@ -35,8 +35,8 @@ const moviePersonSchema = new mongoose.Schema({
     ],
 });
 
-const moviePersonSchema = mongoose.model(
-    "moviePersonSchema",
+const MoviePerson = mongoose.model(
+    "MoviePerson",
     moviePersonSchema
 );
 

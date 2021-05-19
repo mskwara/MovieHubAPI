@@ -1,21 +1,21 @@
 const express = require("express");
-const movieController = require("../controllers/moviePersonController");
+const moviePersonController = require("../controllers/moviePersonController");
 
 const router = express.Router();
 
 router
     .route("/")
-    .post(movieController.createMoviePerson)
-    .get(movieController.getAllPersons);
+    .post(moviePersonController.createMoviePerson)
+    .get(moviePersonController.getAllPersons);
 
 router
     .route("/:moviePersonID")
-    .get(movieController.getMoviePerson)
-    .patch(movieController.updateMoviePerson)
-    .delete(movieController.deleteMoviePerson);
+    .get(moviePersonController.getMoviePerson)
+    .patch(moviePersonController.updateMoviePerson)
+    .delete(moviePersonController.deleteMoviePerson);
 
 router
     .route("/role/:role")
-    .get(movieController.getPersonsByRole)
+    .get(moviePersonController.getPersonsByRole)
 
 module.exports = router;

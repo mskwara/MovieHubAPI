@@ -40,7 +40,7 @@ exports.getMoviePerson = async (req, res, next) => {
     }
 };
 
-exports.updatePerson = async (req, res, next) => {
+exports.updateMoviePerson = async (req, res, next) => {
     try {
         const person = await MoviePerson.findByIdAndUpdate(
             req.params.moviePersonID,
@@ -57,7 +57,7 @@ exports.updatePerson = async (req, res, next) => {
     }
 };
 
-exports.deleteMovie = async (req, res, next) => {
+exports.deleteMoviePerson = async (req, res, next) => {
     try {
         await MoviePerson.findByIdAndDelete(req.params.moviePersonID);
 
