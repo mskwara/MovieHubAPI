@@ -12,8 +12,10 @@ app.use(express.json({ limit: "10kb" }));
 
 app.use("/awards", awardRouter);
 app.use("/movies", movieRouter);
+app.use("/moviepersons", moviePersonRouter);
 
 app.use("/users", userRouter);
+app.use("/comments", commentRouter);
 
 app.use("/reviews", reviewRouter);
 app.use("/news", newsRouter);
