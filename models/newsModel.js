@@ -1,17 +1,15 @@
 const mongoose = require("mongoose");
 
 const newsSchema = new mongoose.Schema({
-    News: {
+    content : {
         type: String,
         required: [true, "empty news."],
     },
-    author: [
+    author: 
         {
             type: mongoose.Schema.ObjectId,
-            ref: "user",
-        },
-    ],
-
+            ref: "user"
+        }
 });
 
 const News = mongoose.model("News", newsSchema);

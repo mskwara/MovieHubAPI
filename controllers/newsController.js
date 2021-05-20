@@ -2,12 +2,12 @@ const News = require("../models/newsModel.js");
 
 exports.getAllNews = async (req, res, next) => {
     try {
-        const oneNews = await News.find();
+        const news = await News.find();
 
         res.status(200).json({
             status: "success",
-            results: oneNews.length,
-            oneNews,
+            results: news.length,
+            news,
         });
     } catch (err) {
         console.log(err);
