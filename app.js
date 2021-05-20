@@ -5,6 +5,8 @@ const userRouter = require("./routers/userRouter");
 const awardRouter = require("./routers/awardRouter");
 const reviewRouter = require("./routers/reviewRouter");
 const newsRouter = require("./routers/newsRouter");
+const moviePersonRouter = require("./routers/moviePersonRouter");
+const commentRouter = require("./routers/commentRouter");
 
 const app = express();
 

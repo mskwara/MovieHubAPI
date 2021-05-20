@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const movieSchema = new mongoose.Schema({
+const newsSchema = new mongoose.Schema({
     News: {
         type: String,
         required: [true, "empty news."],

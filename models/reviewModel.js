@@ -11,8 +11,8 @@ const reviewSchema = new mongoose.Schema({
         max: 5,
     },
     movieID: {
-        type: Number,
-        required: [true, "Review has to belong to the movie"],
+        type: mongoose.Schema.ObjectId,
+        ref: "Movie",
     },
 });
 
