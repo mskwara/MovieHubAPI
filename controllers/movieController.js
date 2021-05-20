@@ -73,7 +73,7 @@ exports.getTopMovies = async (req, res, next) => {
     try {
         const movies = await Movie.find()
             .sort({
-                ratingAverage: 1,
+                ratingAverage: -1,
             })
             .limit(parseInt(req.params.quantity));
 
