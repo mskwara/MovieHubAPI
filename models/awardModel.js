@@ -5,7 +5,7 @@ const awardSchema = new mongoose.Schema({
         type: String,
         enum: ["Oscar", "Nobel"],
     },
-    user: {
+    moviePerson: {
         type: mongoose.Schema.ObjectId,
         ref: "MoviePerson",
     },

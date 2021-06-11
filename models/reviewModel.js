@@ -14,6 +14,10 @@ const reviewSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: "Movie",
     },
+    userID: {
+        type: mongoose.Schema.ObjectId,
+        ref: "User",
+    },
 });
 
 reviewSchema.statics.calcAverageRatings = async function (movieID) {

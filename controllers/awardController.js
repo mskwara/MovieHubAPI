@@ -1,4 +1,4 @@
-const Award = require("../models/movieModel");
+const Award = require("../models/awardModel");
 
 exports.getAllAwards = async (req, res, next) => {
     try {
