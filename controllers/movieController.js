@@ -2,7 +2,7 @@ const Movie = require("../models/movieModel");
 
 exports.getAllMovies = async (req, res, next) => {
     try {
-        const movies = await Movie.find();
+        const movies = await Movie.find().sort({ date: -1 });
 
         res.status(200).json({
             status: "success",

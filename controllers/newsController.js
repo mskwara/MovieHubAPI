@@ -2,7 +2,7 @@ const News = require("../models/newsModel.js");
 
 exports.getAllNews = async (req, res, next) => {
     try {
-        const news = await News.find();
+        const news = await News.find().sort({ date: -1 });
 
         res.status(200).json({
             status: "success",

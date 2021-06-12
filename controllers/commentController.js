@@ -4,7 +4,7 @@ exports.getAllComments = async (req, res, next) => {
     try {
         const comments = await Comment.find({
             movie: req.params.movieID,
-        });
+        }).sort({ date: -1 });
 
         res.status(200).json({
             status: "success",

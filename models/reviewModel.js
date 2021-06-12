@@ -18,6 +18,10 @@ const reviewSchema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: "User",
     },
+    date: {
+        type: Date,
+        default: Date.now,
+    },
 });
 
 reviewSchema.statics.calcAverageRatings = async function (movieID) {

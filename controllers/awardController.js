@@ -2,7 +2,7 @@ const Award = require("../models/awardModel");
 
 exports.getAllAwards = async (req, res, next) => {
     try {
-        const awards = await Award.find();
+        const awards = await Award.find().sort({ date: -1 });
 
         res.status(200).json({
             status: "success",
@@ -71,9 +71,7 @@ exports.deleteAward = async (req, res, next) => {
 
 exports.getAwardByName = async (req, res, next) => {
     try {
-        const awards = await Award.find(
-            {type: req.params.name}
-        );
+        const awards = await Award.find({ type: req.params.name });
 
         res.status(200).json({
             status: "success",
@@ -87,14 +85,14 @@ exports.getAwardByName = async (req, res, next) => {
 
 exports.getPersonAwards = async (req, res, next) => {
     try {
-        const awards = await Award.find(
-            {moviePerson: req.params.moviePersonID}
-        );
+        const awards = await Award.find({
+            moviePerson: req.params.moviePersonID,
+        });
 
         res.status(200).json({
             status: "success",
             results: awards.length,
-            awards
+            awards,
         });
     } catch (err) {
         console.log(err);
@@ -103,14 +101,12 @@ exports.getPersonAwards = async (req, res, next) => {
 
 exports.getMovieAwards = async (req, res, next) => {
     try {
-        const awards = await Award.find(
-            {movie: req.params.movieID}
-        );
+        const awards = await Award.find({ movie: req.params.movieID });
 
         res.status(200).json({
             status: "success",
             results: awards.length,
-            awards
+            awards,
         });
     } catch (err) {
         console.log(err);
