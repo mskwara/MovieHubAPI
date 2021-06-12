@@ -45,6 +45,6 @@ Używanie:
 Interfejs Postmana:
 ![obraz](https://user-images.githubusercontent.com/30327956/121781011-2a9d6d00-cba3-11eb-8783-ce81997926e8.png)
 
-Aby uwzględnić bycie zalogowanym, ustaw następujące wartości (po zaimportowaniu naszego pliku requests.json nie powinno być takiej potrzeby):
+Aby uwzględnić bycie zalogowanym, w requeście ustaw następujące wartości (po zaimportowaniu naszego pliku requests.json nie powinno być takiej potrzeby):
 ![obraz](https://user-images.githubusercontent.com/30327956/121781453-18243300-cba5-11eb-9531-e53b00cc56ce.png)
 
