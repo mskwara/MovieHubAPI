@@ -3,12 +3,17 @@ const mongoose = require("mongoose");
 const newsSchema = new mongoose.Schema({
     content : {
         type: String,
-        required: [true, "empty news."],
+        required: [true, "News cannot be empty."],
     },
-    author: 
+    userID: 
         {
             type: mongoose.Schema.ObjectId,
-            ref: "user"
+            ref: "User"
+        },
+       date: {
+        type: Date,
+        default: Date.now
+
         }
 });
 
