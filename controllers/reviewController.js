@@ -2,7 +2,7 @@ const Review = require("../models/reviewModel");
 
 exports.getAllReviews = async (req, res, next) => {
     try {
-        const review = await Review.find();
+        const review = await Review.find().sort({ date: -1 });
 
         res.status(200).json({
             status: "success",

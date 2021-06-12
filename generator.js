@@ -193,6 +193,13 @@ const generateUsers = async () => {
     }
     console.log("HI");
     await User.create(data);
+    const admin = {
+        username: "test",
+        password: "test",
+        role: "admin",
+        description: "To jest konto do testowania.",
+    };
+    await User.create(admin);
     console.log("User generating finished!\n");
 };
 
