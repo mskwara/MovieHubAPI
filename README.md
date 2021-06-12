@@ -25,7 +25,14 @@ Używanie:
 2. Po lewej stronie w Postmanie naciśniej przycisk: Import
 3. W okienku wybierz plik requesty.json załączony w katalogu głównym projektu.
 4. Naciśnij przycisk Import.
-5. Po lewej stronie powinny być dostępne wszystkie requesty, które można teraz w prosty sposób wywołać.
+5. Aby zapamiętywanie bycia zalogowanym działało poprawnie musisz stworzyć Environment w Postmanie. Wybierz ikonkę oka po prawej stronie i naciśnij przycisk Add:
+![obraz](https://user-images.githubusercontent.com/30327956/121781845-f461ec80-cba6-11eb-9c12-47e573608b25.png)
+6. Wybierz jakąkolwiek nazwę dla środowiska oraz wyznacz zmienną o nazwie jwt:
+![obraz](https://user-images.githubusercontent.com/30327956/121781900-312de380-cba7-11eb-8bfb-b89a5ffea037.png)
+7. Wybierz stworzone środowisko z rozwijanego panelu:
+![obraz](https://user-images.githubusercontent.com/30327956/121781914-4c005800-cba7-11eb-9115-cb106eb5d611.png)
+
+8. Po lewej stronie powinny być dostępne wszystkie requesty, które można teraz w prosty sposób wywołać.
   a) Niektóre z nich wymagają bycia zalogowanym - najpierw wyślij requesta umieszczonego w Users -> Login, podając w body
         username: test,
         password: test
