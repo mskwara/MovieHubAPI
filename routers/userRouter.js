@@ -15,9 +15,11 @@ router.patch("/updatePassword", authController.updatePassword);
 router
     .route("/:userID")
     .get(userController.getUser)
-    .patch(userController.updateUser);
-// .delete(userController.deleteUser);
+    .patch(userController.updateUser)
+    .delete(authController.restrictTo("admin"), userController.deleteUser);
 
-router.route("/").get(userController.getAllUsers);
+router
+    .route("/")
+    .get(authController.restrictTo("admin"), userController.getAllUsers);
 
 module.exports = router;

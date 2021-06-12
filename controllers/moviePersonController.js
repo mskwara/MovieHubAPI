@@ -98,3 +98,27 @@ exports.getPersonMovies = async (req, res, next) => {
         console.log(err);
     }
 };
+
+exports.getPersonsWithTodaysBirthday = async (req, res, next) => {
+    try {
+        const today = new Date()
+        const tommorow = new Date()
+        tommorow.setDate(today.getDate() + 1)
+        
+        const persons = await MoviePerson.find({
+            birthdate: {
+                $gte: today,
+                $lt: tommorow
+                }
+            }
+        );
+
+        res.status(200).json({
+            status: "success",
+            results: persons.length,
+            persons,
+        });
+    } catch (err) {
+        console.log(err);
+    }
+};
