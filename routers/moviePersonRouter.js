@@ -28,12 +28,21 @@ router
         moviePersonController.deleteMoviePerson,
     );
 
-router.route("/role/:role").get(moviePersonController.getPersonsByRole);
+router
+    .route("/role/:role")
+    .get(moviePersonController.getPersonsByRole);
 
 router
     .route("/:moviePersonID/movies")
     .get(moviePersonController.getPersonMovies);
 
-router.route("/:moviePersonID/awards").get(awardController.getPersonAwards);
+router
+    .route("/todaysBirthday")
+    .get(moviePersonController.getPersonsWithTodaysBirthday);
+
+router
+    .route("/:moviePersonID/awards")
+    .get(awardController.getPersonAwards);
+
 
 module.exports = router;
