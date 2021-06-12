@@ -11,6 +11,14 @@ const Review = require("./models/reviewModel");
 const User = require("./models/userModel");
 dotenv.config({ path: "./config.env" });
 
+const MOVIES_COUNT = 1000;
+const MOVIE_PERSONS_COUNT = 1000;
+const AWARDS_COUNT = 200;
+const REVIEWS_COUNT = 2000;
+const COMMENTS_COUNT = 3000;
+const NEWS_COUNT = 400;
+const USERS_COUNT = 500;
+
 const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 const phrase = (min, max) => {
     const wordCount = random(min, max);
@@ -24,8 +32,10 @@ const phrase = (min, max) => {
 };
 
 const randomDate = (start, end) => {
-    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-}
+    return new Date(
+        start.getTime() + Math.random() * (end.getTime() - start.getTime())
+    );
+};
 
 const dropAllCollections = async () => {
     console.log("Dropping existing collections...");
@@ -43,7 +53,7 @@ const generateMovies = async () => {
     console.log("Generating movies...");
     const genres = ["family", "comedy", "religious", "action", "sci-fi"];
     const data = [];
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < MOVIES_COUNT; i++) {
         data.push({
             title: phrase(1, 4),
             description: phrase(50, 200),
@@ -65,7 +75,7 @@ const generateMoviePersons = async () => {
         "makeup artist",
     ];
     const movies = await Movie.find();
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < MOVIE_PERSONS_COUNT; i++) {
         const hisMoviesSet = new Set();
         const moviesCount = random(1, 20);
         for (let m = 0; m < moviesCount; m++) {
@@ -85,15 +95,15 @@ const generateMoviePersons = async () => {
 const generateAwards = async () => {
     console.log("Generating awards...");
     const data = [];
-    const types = ["Oscar", "Nobel"];
+    const types = ["Oscar", "Golden Globe", "Golden Raspberry", "Emmy Award"];
     const moviePersons = await MoviePerson.find();
     const movies = await Movie.find();
-    for (let i = 0; i < 200; i++) {
+    for (let i = 0; i < AWARDS_COUNT; i++) {
         data.push({
             type: types[random(0, 1)],
             moviePerson: moviePersons[random(0, moviePersons.length)]._id,
             movie: movies[random(0, movies.length)]._id,
-            date: randomDate(new Date(1979, 0, 1), new Date())
+            date: randomDate(new Date(1979, 0, 1), new Date()),
         });
     }
     await Award.create(data);
@@ -105,7 +115,7 @@ const generateReviews = async () => {
     const data = [];
     const movies = await Movie.find();
     const users = await User.find();
-    for (let i = 0; i < 200; i++) {
+    for (let i = 0; i < REVIEWS_COUNT; i++) {
         data.push({
             content: phrase(5, 100),
             rating: random(1, 5),
@@ -122,7 +132,7 @@ const generateComments = async () => {
     const data = [];
     const movies = await Movie.find();
     const users = await User.find();
-    for (let i = 0; i < 2000; i++) {
+    for (let i = 0; i < COMMENTS_COUNT; i++) {
         data.push({
             content: phrase(5, 100),
             movieID: movies[random(0, movies.length)]._id,
@@ -137,7 +147,7 @@ const generateNews = async () => {
     console.log("Generating news...");
     const data = [];
     const users = await User.find();
-    for (let i = 0; i < 500; i++) {
+    for (let i = 0; i < NEWS_COUNT; i++) {
         data.push({
             content: phrase(300, 700),
             userID: users[random(0, users.length)]._id,
@@ -156,7 +166,7 @@ const generateUsers = async () => {
     const characters =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-    for (let i = 0; i < 500; i++) {
+    for (let i = 0; i < USERS_COUNT; i++) {
         let role = "user";
         if (random(1, 100) == 1) {
             role == "admin";
@@ -194,16 +204,13 @@ mongoose
     .then(async () => {
         console.log("DB connection established!");
         // await dropAllCollections();
-        // await generateMovies();
-        // await generateMoviePersons();
-        // await generateAwards();
-        // await generateUsers();
-        // await generateReviews();
-        // await generateComments();
-        // await generateNews();
-        // await dropAllCollections();
-        // generateMovies();
-        // await generateMoviePersons();
+        await generateMovies();
+        await generateMoviePersons();
+        await generateAwards();
+        await generateUsers();
+        await generateReviews();
+        await generateComments();
+        await generateNews();
 
         console.log("ALL DATA HAS BEEN GENERATED!");
         mongoose.disconnect();

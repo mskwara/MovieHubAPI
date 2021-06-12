@@ -1,6 +1,7 @@
 const express = require("express");
 const movieController = require("../controllers/movieController");
 const commentController = require("../controllers/commentController");
+const awardController = require("../controllers/awardController");
 const authController = require("../controllers/authController");
 
 const router = express.Router();
@@ -25,8 +26,6 @@ router
     .get(commentController.getAllComments)
     .post(commentController.createComment);
 
-router
-    .route("/:movieID/awards")
-    .get(awardController.getMovieAwards);
+router.route("/:movieID/awards").get(awardController.getMovieAwards);
 
 module.exports = router;
