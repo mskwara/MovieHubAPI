@@ -1,23 +1,24 @@
 const mongoose = require("mongoose");
 
-const awardSchema = new mongoose.Schema({
-    text: {
+const commentSchema = new mongoose.Schema({
+    content: {
         type: String,
-        required: [true, "You can't post an empty comment"]
+        required: [true, "You can't post an empty comment"],
     },
     date: {
-        type: Date
+        type: Date,
+        default: Date.now,
     },
-    user: {
+    userID: {
         type: mongoose.Schema.ObjectId,
         ref: "User",
     },
-    movie: {
+    movieID: {
         type: mongoose.Schema.ObjectId,
         ref: "Movie",
     },
 });
 
-const Comment = mongoose.model("Comment", awardSchema);
+const Comment = mongoose.model("Comment", commentSchema);
 
 module.exports = Comment;

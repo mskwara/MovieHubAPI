@@ -6,6 +6,10 @@ const movieSchema = new mongoose.Schema({
         required: [true, "A movie must have a title."],
     },
     description: String,
+    genre: {
+        type: String,
+        enum: ["family", "comedy", "religious", "action", "sci-fi"],
+    },
     actors: [
         {
             type: mongoose.Schema.ObjectId,
