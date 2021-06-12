@@ -84,3 +84,17 @@ exports.getPersonsByRole = async (req, res, next) => {
         console.log(err);
     }
 };
+
+exports.getPersonMovies = async (req, res, next) => {
+    try {
+        const person = await MoviePerson.findById(req.params.moviePersonID);
+
+        res.status(200).json({
+            status: "success",
+            results: person.movies.length,
+            movies: person.movies,
+        });
+    } catch (err) {
+        console.log(err);
+    }
+};

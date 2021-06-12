@@ -16,6 +16,14 @@ router
 
 router
     .route("/role/:role")
-    .get(moviePersonController.getPersonsByRole)
+    .get(moviePersonController.getPersonsByRole);
+
+router
+    .route("/:moviePersonID/movies")
+    .get(moviePersonController.getPersonMovies);
+
+router
+    .route("/:moviePersonID/awards")
+    .get(awardController.getPersonsAwards);
 
 module.exports = router;

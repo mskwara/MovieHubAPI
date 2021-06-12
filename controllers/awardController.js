@@ -68,3 +68,51 @@ exports.deleteAward = async (req, res, next) => {
         console.log(err);
     }
 };
+
+exports.getAwardByName = async (req, res, next) => {
+    try {
+        const awards = await Award.find(
+            {type: req.params.name}
+        );
+
+        res.status(200).json({
+            status: "success",
+            results: awards.length,
+            awards,
+        });
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+exports.getPersonAwards = async (req, res, next) => {
+    try {
+        const awards = await Award.find(
+            {moviePerson: req.params.moviePersonID}
+        );
+
+        res.status(200).json({
+            status: "success",
+            results: awards.length,
+            awards
+        });
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+exports.getMovieAwards = async (req, res, next) => {
+    try {
+        const awards = await Award.find(
+            {movie: req.params.movieID}
+        );
+
+        res.status(200).json({
+            status: "success",
+            results: awards.length,
+            awards
+        });
+    } catch (err) {
+        console.log(err);
+    }
+};

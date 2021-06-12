@@ -5,6 +5,11 @@ const moviePersonSchema = new mongoose.Schema({
         type: String,
         required: [true, "A person must have a name."],
     },
+    birthdate: {
+        type: Date,
+        required: [true, "A person must have a birthdate."],
+        ref: "birthdate",
+    },
     role: {
         type: String,
         enum: [

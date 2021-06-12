@@ -25,4 +25,8 @@ router
     .get(commentController.getAllComments)
     .post(commentController.createComment);
 
+router
+    .route("/:movieID/awards")
+    .get(awardController.getMovieAwards);
+
 module.exports = router;

@@ -9,9 +9,13 @@ router
     .post(awardController.createAward);
 
 router
-    .route("/:movieID")
+    .route("/:awardID")
     .get(awardController.getAward)
     .patch(awardController.updateAward)
     .delete(awardController.deleteAward);
+
+router
+    .route("/awardName/:name")
+    .get(awardController.getAwardByName)
 
 module.exports = router;
