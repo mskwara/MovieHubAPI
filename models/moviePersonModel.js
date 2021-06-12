@@ -27,12 +27,6 @@ const moviePersonSchema = new mongoose.Schema({
             ref: "Movie",
         },
     ],
-    awards: [
-        {
-            type: mongoose.Schema.ObjectId,
-            ref: "Award",
-        },
-    ],
 });
 
 const MoviePerson = mongoose.model(
