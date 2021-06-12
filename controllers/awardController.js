@@ -112,3 +112,22 @@ exports.getMovieAwards = async (req, res, next) => {
         console.log(err);
     }
 };
+
+exports.getAwardsInPeriod = async (req, res, next) => {
+    try {
+        const begin = new Date(req.params.begin);
+        const end = new Date(req.params.end);
+
+        const awards = await Award.find({
+            date: { $gte: begin, $lte: end },
+        }).sort({ date: -1 });
+
+        res.status(200).json({
+            status: "success",
+            results: awards.length,
+            awards,
+        });
+    } catch (err) {
+        console.log(err);
+    }
+};

@@ -27,5 +27,6 @@ router
     .post(commentController.createComment);
 
 router.route("/:movieID/awards").get(awardController.getMovieAwards);
+router.route("/between/:begin/:end").get(movieController.getMoviesInPeriod);
 
 module.exports = router;

@@ -24,5 +24,6 @@ router
     );
 
 router.route("/awardName/:name").get(awardController.getAwardByName);
+router.route("/between/:begin/:end").get(awardController.getAwardsInPeriod);
 
 module.exports = router;

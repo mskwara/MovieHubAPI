@@ -86,3 +86,22 @@ exports.getTopMovies = async (req, res, next) => {
         console.log(err);
     }
 };
+
+exports.getMoviesInPeriod = async (req, res, next) => {
+    try {
+        const begin = new Date(req.params.begin);
+        const end = new Date(req.params.end);
+
+        const movies = await Movie.find({
+            date: { $gte: begin, $lte: end },
+        }).sort({ date: -1 });
+
+        res.status(200).json({
+            status: "success",
+            results: movies.length,
+            movies,
+        });
+    } catch (err) {
+        console.log(err);
+    }
+};
