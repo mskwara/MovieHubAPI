@@ -37,7 +37,6 @@ exports.createComment = async (req, res, next) => {
 exports.getComment = async (req, res, next) => {
     try {
         const comment = await Comment.findById(req.params.commentID);
-        console.log("rak");
 
         res.status(200).json({
             status: "success",

@@ -80,7 +80,7 @@ exports.protect = async (req, res, next) => {
         req.user = currentUser;
         next();
     } catch (err) {
-        console.log(err);
+        // console.log(err);
         res.status(401).json({
             status: "fail",
             message: "Authentication failed",

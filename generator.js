@@ -78,7 +78,7 @@ const generateMoviePersons = async () => {
     console.log("Movie persons generating finished!\n");
 };
 
-const generateAwards = () => {
+const generateAwards = async () => {
     console.log("Generating awards...");
     const data = [];
     const types = ["Oscar", "Nobel"];
@@ -95,7 +95,7 @@ const generateAwards = () => {
     console.log("Awards generating finished!\n");
 };
 
-const generateReviews = () => {
+const generateReviews = async () => {
     console.log("Generating reviews...");
     const data = [];
     const movies = await Movie.find();
@@ -112,7 +112,7 @@ const generateReviews = () => {
     console.log("Reviews generating finished!\n");
 };
 
-const generateComments = () => {
+const generateComments = async () => {
     console.log("Generating comments...");
     const data = [];
     const movies = await Movie.find();
@@ -128,7 +128,7 @@ const generateComments = () => {
     console.log("Comments generating finished!\n");
 };
 
-const generateNews = () => {
+const generateNews = async () => {
     console.log("Generating news...");
     const data = [];
     const users = await User.find();
@@ -142,6 +142,43 @@ const generateNews = () => {
     console.log("News generating finished!\n");
 };
 
+// Dodaje długo //
+const generateUsers = async () => {
+    console.log("Generating users...");
+    password = "aaaaaaaa";
+    const data = [];
+    const usernames = new Set();
+    const characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (let i = 0; i < 500; i++) {
+        let role = "user";
+        if (random(1, 100) == 1) {
+            role == "admin";
+        }
+        let username;
+        do {
+            username = "";
+            for (let j = 0; j < random(6, 15); j++) {
+                username += characters.charAt(
+                    Math.floor(Math.random() * characters.length)
+                );
+            }
+        } while (username in usernames);
+        usernames.add(username);
+
+        data.push({
+            username,
+            password,
+            role,
+            description: phrase(10, 50),
+        });
+    }
+    console.log("HI");
+    await User.create(data);
+    console.log("User generating finished!\n");
+};
+
 mongoose
     .connect(process.env.DATABASE, {
         useNewUrlParser: true,
@@ -151,14 +188,17 @@ mongoose
     })
     .then(async () => {
         console.log("DB connection established!");
-        await dropAllCollections();
-        await generateMovies();
-        await generateMoviePersons();
-        await generateAwards();
-        // tutaj generate users
-        await generateReviews();
-        await generateComments();
-        await generateNews();
+        // await dropAllCollections();
+        // await generateMovies();
+        // await generateMoviePersons();
+        // await generateAwards();
+        // await generateUsers();
+        // await generateReviews();
+        // await generateComments();
+        // await generateNews();
+        // await dropAllCollections();
+        // generateMovies();
+        // await generateMoviePersons();
 
         console.log("ALL DATA HAS BEEN GENERATED!");
         mongoose.disconnect();

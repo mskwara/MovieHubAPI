@@ -15,12 +15,6 @@ const userSchema = new mongoose.Schema({
         select: false,
     },
     passwordChangedAt: Date,
-    ratedMovies: [
-        {
-            type: mongoose.Schema.ObjectId,
-            ref: "Movie",
-        },
-    ],
     role: {
         type: String,
         enum: ["admin", "user"],
