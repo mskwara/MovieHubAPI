@@ -16,8 +16,9 @@ Instalacja:
 2. Zainstaluj node - https://nodejs.org/en/download/
 3. Otwórz folder projektu.
 4. W konsoli wywołaj: npm install
-5. Następnie w konsoli wywołaj: npm start
-6. W tym momencie serwer łączy się z bazą danych i oczekuje na zapytania.
+5. Aby wygenerować dane wpisz w konsoli: npm run generate
+6. Następnie w konsoli wywołaj: npm start
+7. W tym momencie serwer łączy się z bazą danych i oczekuje na zapytania.
 
 Używanie:
 1. Pobierz Postmana do wysyłania requestów - https://www.postman.com/downloads/
@@ -25,6 +26,18 @@ Używanie:
 3. W okienku wybierz plik requesty.json załączony w katalogu głównym projektu.
 4. Naciśnij przycisk Import.
 5. Po lewej stronie powinny być dostępne wszystkie requesty, które można teraz w prosty sposób wywołać.
-  a) Wybierz jeden z requestów
-  b) W niektórych requestach metodą POST, PATCH występuje sekcja Body dostępna pod adresem requesta. Można tam zmienić przesyłane dane dotyczące danego requesta.
-  c) Kliknij niebieski przycisk Send.
+  a) Niektóre z nich wymagają bycia zalogowanym - najpierw wyślij requesta umieszczonego w Users -> Login, podając w body
+        username: test,
+        password: test
+     Dzięki temu jesteś teraz zalogowany na konto administratora. Można również wykorzystać request Users -> Signup do utworzenia własnego konta (zwykły użytkownik).
+  b) Wybierz jeden z requestów
+  c) W niektórych requestach metodą POST, PATCH występuje sekcja Body dostępna pod adresem requesta. Można tam zmienić przesyłane dane dotyczące danego requesta.
+  d) Kliknij niebieski przycisk Send.
+  
+  
+Interfejs Postmana:
+![obraz](https://user-images.githubusercontent.com/30327956/121781011-2a9d6d00-cba3-11eb-8783-ce81997926e8.png)
+
+Aby uwzględnić bycie zalogowanym, ustaw następujące wartości (po zaimportowaniu naszego pliku requests.json nie powinno być takiej potrzeby):
+![obraz](https://user-images.githubusercontent.com/30327956/121781453-18243300-cba5-11eb-9531-e53b00cc56ce.png)
+
