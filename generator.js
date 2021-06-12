@@ -23,6 +23,10 @@ const phrase = (min, max) => {
     return words.join(" ");
 };
 
+const randomDate = (start, end) => {
+    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+}
+
 const dropAllCollections = async () => {
     console.log("Dropping existing collections...");
     await Movie.deleteMany();
@@ -89,6 +93,7 @@ const generateAwards = async () => {
             type: types[random(0, 1)],
             moviePerson: moviePersons[random(0, moviePersons.length)]._id,
             movie: movies[random(0, movies.length)]._id,
+            date: randomDate(new Date(1979, 0, 1), new Date())
         });
     }
     await Award.create(data);
