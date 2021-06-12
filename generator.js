@@ -58,6 +58,7 @@ const generateMovies = async () => {
             title: phrase(1, 4),
             description: phrase(50, 200),
             genre: genres[random(0, genres.length)],
+            date: randomDate(new Date(1979, 0, 1), new Date()),
         });
     }
     await Movie.create(data);
@@ -84,6 +85,7 @@ const generateMoviePersons = async () => {
         data.push({
             name: phrase(1, 2),
             role: roles[random(0, roles.length)],
+            birthdate: randomDate(new Date(1979, 0, 1), new Date()),
             description: phrase(50, 200),
             movies: hisMoviesSet,
         });

@@ -10,6 +10,11 @@ const movieSchema = new mongoose.Schema({
         type: String,
         enum: ["family", "comedy", "religious", "action", "sci-fi"],
     },
+    date: {
+        type: Date,
+        required: [true, "A movie must have a date."],
+        ref: "date",
+    },
     actors: [
         {
             type: mongoose.Schema.ObjectId,
