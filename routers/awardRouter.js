@@ -13,14 +13,14 @@ router
     .route("/:awardID")
     .get(awardController.getAward)
     .patch(
-        awardController.updateAward,
         authController.protect,
-        authController.restrictTo("admin")
+        authController.restrictTo("admin"),
+        awardController.updateAward
     )
     .delete(
-        awardController.deleteAward,
         authController.protect,
-        authController.restrictTo("admin")
+        authController.restrictTo("admin"),
+        awardController.deleteAward
     );
 
 router.route("/awardName/:name").get(awardController.getAwardByName);

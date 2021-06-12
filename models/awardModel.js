@@ -8,7 +8,6 @@ const awardSchema = new mongoose.Schema({
     date: {
         type: Date,
         required: [true, "A award must have a date."],
-        ref: "date",
     },
     moviePerson: {
         type: mongoose.Schema.ObjectId,

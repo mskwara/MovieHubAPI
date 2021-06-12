@@ -32,10 +32,13 @@ function createAuthToken(user, statusCode, res) {
 exports.restrictTo = (...privileges) => {
     return (req, res, next) => {
         if (!privileges.includes(req.user.role)) {
-            return next(new AppError('You don\'t have permission to perform this action', 403));
+            return res.status(401).json({
+                status: "fail",
+                message: "You don't have permission to perform this action",
+            });
         }
         next();
-    }
+    };
 };
 
 exports.protect = async (req, res, next) => {
@@ -70,7 +73,7 @@ exports.protect = async (req, res, next) => {
         const currentUser = await User.findById(decoded.id);
 
         if (!currentUser) {
-            res.status(401).json({
+            return res.status(401).json({
                 status: "fail",
                 message: "The user does not longer exist.",
             });
@@ -78,7 +81,7 @@ exports.protect = async (req, res, next) => {
 
         // 4) Check if user changed password after token was issued
         if (currentUser.changedPasswordAfter(decoded.iat)) {
-            res.status(401).json({
+            return res.status(401).json({
                 status: "fail",
                 message: "User recently changed password! Please log in again!",
             });
@@ -90,7 +93,7 @@ exports.protect = async (req, res, next) => {
         next();
     } catch (err) {
         // console.log(err);
-        res.status(401).json({
+        return res.status(401).json({
             status: "fail",
             message: "Authentication failed",
         });
@@ -148,7 +151,7 @@ exports.login = async (req, res, next) => {
     user = await User.findOne({ username }).select("+password");
 
     if (!user || !(await user.correctPassword(password, user.password))) {
-        res.status(401).json({
+        return res.status(401).json({
             status: "fail",
             message: "Incorrect email or password!",
         });
