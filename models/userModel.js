@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: [true, "User must have username."],
-        unique: [true, "This username already exists."]
+        unique: [true, "This username already exists."],
     },
     description: {
         type: String,
@@ -15,7 +15,10 @@ const userSchema = new mongoose.Schema({
         required: [true, "User must have a password"],
         select: false,
     },
-    passwordChangedAt: Date,
+    passwordChangedAt: {
+        type: Date,
+        select: false,
+    },
     role: {
         type: String,
         enum: ["admin", "user"],

@@ -18,8 +18,12 @@ router
     .patch(userController.updateUser)
     .delete(authController.restrictTo("admin"), userController.deleteUser);
 
-router
-    .route("/")
-    .get(authController.restrictTo("admin"), userController.getAllUsers);
+router.route("/minComments/:number").get(userController.getUserWithNComments);
+
+router.route("/minReviews/:number").get(userController.getUserWithNReviews);
+
+router.use(authController.restrictTo("admin"));
+
+router.route("/").get(userController.getAllUsers);
 
 module.exports = router;

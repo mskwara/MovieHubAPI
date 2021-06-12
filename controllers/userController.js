@@ -1,4 +1,6 @@
 const User = require("../models/userModel");
+const Comment = require("../models/commentModel");
+const Review = require("../models/reviewModel");
 
 function filterObj(obj, ...allowedFields) {
     const newObj = {};
@@ -69,6 +71,66 @@ exports.deleteUser = async (req, res, next) => {
 
         res.status(204).json({
             status: "success",
+        });
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+exports.getUserWithNComments = async (req, res, next) => {
+    try {
+        let usersMatched = await Comment.aggregate([
+            {
+                $group: {
+                    _id: "$userID",
+                    comments: { $sum: 1 },
+                },
+            },
+            {
+                $match: {
+                    comments: { $gte: parseInt(req.params.number) },
+                },
+            },
+        ]);
+        usersMatched = usersMatched.map((object) => object._id);
+
+        const users = await User.find({
+            _id: { $in: usersMatched },
+        }).select("-description -__v");
+
+        res.status(200).json({
+            status: "success",
+            users,
+        });
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+exports.getUserWithNReviews = async (req, res, next) => {
+    try {
+        let usersMatched = await Review.aggregate([
+            {
+                $group: {
+                    _id: "$userID",
+                    reviews: { $sum: 1 },
+                },
+            },
+            {
+                $match: {
+                    reviews: { $gte: parseInt(req.params.number) },
+                },
+            },
+        ]);
+        usersMatched = usersMatched.map((object) => object._id);
+
+        const users = await User.find({
+            _id: { $in: usersMatched },
+        }).select("-description -__v");
+
+        res.status(200).json({
+            status: "success",
+            users,
         });
     } catch (err) {
         console.log(err);

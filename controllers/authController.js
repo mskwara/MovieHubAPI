@@ -70,7 +70,9 @@ exports.protect = async (req, res, next) => {
         );
 
         // 3) Check if user still exists
-        const currentUser = await User.findById(decoded.id).select("+role");
+        const currentUser = await User.findById(decoded.id).select(
+            "role passwordChangedAt"
+        );
 
         if (!currentUser) {
             return res.status(401).json({
