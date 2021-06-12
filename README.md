@@ -32,14 +32,14 @@ Używanie:
 7. Wybierz stworzone środowisko z rozwijanego panelu:
 ![obraz](https://user-images.githubusercontent.com/30327956/121781914-4c005800-cba7-11eb-9115-cb106eb5d611.png)
 
-8. Po lewej stronie powinny być dostępne wszystkie requesty, które można teraz w prosty sposób wywołać.
-  a) Niektóre z nich wymagają bycia zalogowanym - najpierw wyślij requesta umieszczonego w Users -> Login, podając w body
-        username: test,
-        password: test
-     Dzięki temu jesteś teraz zalogowany na konto administratora. Można również wykorzystać request Users -> Signup do utworzenia własnego konta (zwykły użytkownik).
-  b) Wybierz jeden z requestów
-  c) W niektórych requestach metodą POST, PATCH występuje sekcja Body dostępna pod adresem requesta. Można tam zmienić przesyłane dane dotyczące danego requesta.
-  d) Kliknij niebieski przycisk Send.
+8. Po lewej stronie powinny być dostępne wszystkie requesty, które można teraz w prosty sposób wywołać.<br>
+  a) Niektóre z nich wymagają bycia zalogowanym - najpierw wyślij requesta umieszczonego w Users -> Login, podając w body<br>
+        username: test,<br>
+        password: test<br>
+     Dzięki temu jesteś teraz zalogowany na konto administratora. Można również wykorzystać request Users -> Signup do utworzenia własnego konta (zwykły użytkownik).<br>
+  b) Wybierz jeden z requestów<br>
+  c) W niektórych requestach metodą POST, PATCH występuje sekcja Body dostępna pod adresem requesta. Można tam zmienić przesyłane dane dotyczące danego requesta.<br>
+  d) Kliknij niebieski przycisk Send.<br>
   
   
 Interfejs Postmana:
