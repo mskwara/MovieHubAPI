@@ -8,9 +8,9 @@ router
     .route("/")
     .get(awardController.getAllAwards)
     .post(
-        awardController.createAward,
         authController.protect,
-        authController.restrictTo("admin")
+        authController.restrictTo("admin"),
+        awardController.createAward
     );
 
 router

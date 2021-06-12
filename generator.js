@@ -97,12 +97,17 @@ const generateMoviePersons = async () => {
 const generateAwards = async () => {
     console.log("Generating awards...");
     const data = [];
-    const types = ["Oscar", "Golden Globe", "Golden Raspberry", "Emmy Award"];
+    const awardNames = [
+        "Oscar",
+        "Golden Globe",
+        "Golden Raspberry",
+        "Emmy Award",
+    ];
     const moviePersons = await MoviePerson.find();
     const movies = await Movie.find();
     for (let i = 0; i < AWARDS_COUNT; i++) {
         data.push({
-            type: types[random(0, 1)],
+            awardName: awardNames[random(0, awardNames.length)],
             moviePerson: moviePersons[random(0, moviePersons.length)]._id,
             movie: movies[random(0, movies.length)]._id,
             date: randomDate(new Date(1979, 0, 1), new Date()),
@@ -117,15 +122,41 @@ const generateReviews = async () => {
     const data = [];
     const movies = await Movie.find();
     const users = await User.find();
+    const moviesToUpdate = [];
     for (let i = 0; i < REVIEWS_COUNT; i++) {
+        const movieID = movies[random(0, movies.length)]._id;
+        const rating = random(1, 5 + 1);
         data.push({
             content: phrase(5, 100),
-            rating: random(1, 5),
-            movieID: movies[random(0, movies.length)]._id,
+            rating,
+            movieID,
             userID: users[random(0, users.length)]._id,
         });
+        if (moviesToUpdate.some((entry) => entry.movieID === movieID)) {
+            const existingEntry = moviesToUpdate.filter(
+                (entry) => entry.movieID === movieID
+            )[0];
+            existingEntry.values.sum += rating;
+            existingEntry.values.quantity++;
+        } else {
+            moviesToUpdate.push({
+                movieID,
+                values: {
+                    sum: rating,
+                    quantity: 1,
+                },
+            });
+        }
     }
     await Review.create(data);
+    for (const entry of moviesToUpdate) {
+        await Movie.findByIdAndUpdate(entry.movieID, {
+            $set: {
+                ratingAverage: entry.values.sum / entry.values.quantity,
+                ratingQuantity: entry.values.quantity,
+            },
+        });
+    }
     console.log("Reviews generating finished!\n");
 };
 
@@ -191,7 +222,6 @@ const generateUsers = async () => {
             description: phrase(10, 50),
         });
     }
-    console.log("HI");
     await User.create(data);
     const admin = {
         username: "test",
@@ -212,7 +242,8 @@ mongoose
     })
     .then(async () => {
         console.log("DB connection established!");
-        // await dropAllCollections();
+
+        await dropAllCollections();
         await generateMovies();
         await generateMoviePersons();
         await generateAwards();

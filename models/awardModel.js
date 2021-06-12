@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const awardSchema = new mongoose.Schema({
-    type: {
+    awardName: {
         type: String,
         enum: ["Oscar", "Golden Globe", "Golden Raspberry", "Emmy Award"],
     },

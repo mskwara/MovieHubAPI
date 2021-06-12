@@ -13,7 +13,6 @@ const movieSchema = new mongoose.Schema({
     date: {
         type: Date,
         required: [true, "A movie must have a date."],
-        ref: "date",
     },
     actors: [
         {
