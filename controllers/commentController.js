@@ -55,6 +55,13 @@ exports.updateComment = async (req, res, next) => {
             { new: true }
         );
 
+        if (user._id != comment.userID) {
+            return res.status(403).json({
+                status: "fail",
+                message: "You don't have permission to perform this action.",
+            });
+        }
+
         res.status(200).json({
             status: "success",
             comment,
@@ -66,7 +73,15 @@ exports.updateComment = async (req, res, next) => {
 
 exports.deleteComment = async (req, res, next) => {
     try {
-        await Comment.findByIdAndDelete(req.params.commentID);
+        const comment = await Comment.findById(req.params.commentID);
+        if (user._id != comment.userID) {
+            return res.status(403).json({
+                status: "fail",
+                message: "You don't have permission to perform this action.",
+            });
+        }
+
+        comment.delete();
 
         res.status(204).json({
             status: "success",

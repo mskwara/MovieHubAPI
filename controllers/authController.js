@@ -29,9 +29,9 @@ function createAuthToken(user, statusCode, res) {
     });
 }
 
-exports.restrictTo = (...privileges) => {
+exports.restrictTo = (...roles) => {
     return (req, res, next) => {
-        if (!privileges.includes(req.user.role)) {
+        if (!roles.includes(req.user.role)) {
             return res.status(401).json({
                 status: "fail",
                 message: "You don't have permission to perform this action",
@@ -70,7 +70,7 @@ exports.protect = async (req, res, next) => {
         );
 
         // 3) Check if user still exists
-        const currentUser = await User.findById(decoded.id);
+        const currentUser = await User.findById(decoded.id).select("+role");
 
         if (!currentUser) {
             return res.status(401).json({

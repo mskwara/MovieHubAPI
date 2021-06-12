@@ -1,17 +1,30 @@
 const express = require("express");
 const newsController = require("../controllers/newsController");
+const authController = require("../controllers/authController");
 
 const router = express.Router();
 
 router
     .route("/")
     .get(newsController.getAllNews)
-    .post(newsController.createNews);
+    .post(
+        authController.protect,
+        authController.restrictTo("admin"),
+        newsController.createNews
+    );
 
 router
     .route("/:newsID")
     .get(newsController.getNews)
-    .patch(newsController.updateNews)
-    .delete(newsController.deleteNews);
+    .patch(
+        authController.protect,
+        authController.restrictTo("admin"),
+        newsController.updateNews
+    )
+    .delete(
+        authController.protect,
+        authController.restrictTo("admin"),
+        newsController.deleteNews
+    );
 
 module.exports = router;

@@ -7,7 +7,11 @@ const router = express.Router();
 router
     .route("/")
     .get(awardController.getAllAwards)
-    .post(awardController.createAward);
+    .post(
+        awardController.createAward,
+        authController.protect,
+        authController.restrictTo("admin")
+    );
 
 router
     .route("/:awardID")
