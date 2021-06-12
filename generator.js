@@ -37,11 +37,13 @@ const dropAllCollections = async () => {
 
 const generateMovies = async () => {
     console.log("Generating movies...");
+    const genres = ["family", "comedy", "religious", "action", "sci-fi"];
     const data = [];
     for (let i = 0; i < 1000; i++) {
         data.push({
             title: phrase(1, 4),
             description: phrase(50, 200),
+            genre: genres[random(0, genres.length)],
         });
     }
     await Movie.create(data);
@@ -76,6 +78,70 @@ const generateMoviePersons = async () => {
     console.log("Movie persons generating finished!\n");
 };
 
+const generateAwards = () => {
+    console.log("Generating awards...");
+    const data = [];
+    const types = ["Oscar", "Nobel"];
+    const moviePersons = await MoviePerson.find();
+    const movies = await Movie.find();
+    for (let i = 0; i < 200; i++) {
+        data.push({
+            type: types[random(0, 1)],
+            moviePerson: moviePersons[random(0, moviePersons.length)]._id,
+            movie: movies[random(0, movies.length)]._id,
+        });
+    }
+    await Award.create(data);
+    console.log("Awards generating finished!\n");
+};
+
+const generateReviews = () => {
+    console.log("Generating reviews...");
+    const data = [];
+    const movies = await Movie.find();
+    const users = await User.find();
+    for (let i = 0; i < 200; i++) {
+        data.push({
+            content: phrase(5, 100),
+            rating: random(1, 5),
+            movieID: movies[random(0, movies.length)]._id,
+            userID: users[random(0, users.length)]._id,
+        });
+    }
+    await Review.create(data);
+    console.log("Reviews generating finished!\n");
+};
+
+const generateComments = () => {
+    console.log("Generating comments...");
+    const data = [];
+    const movies = await Movie.find();
+    const users = await User.find();
+    for (let i = 0; i < 2000; i++) {
+        data.push({
+            content: phrase(5, 100),
+            movieID: movies[random(0, movies.length)]._id,
+            userID: users[random(0, users.length)]._id,
+        });
+    }
+    await Comment.create(data);
+    console.log("Comments generating finished!\n");
+};
+
+const generateNews = () => {
+    console.log("Generating news...");
+    const data = [];
+    const users = await User.find();
+    for (let i = 0; i < 500; i++) {
+        data.push({
+            content: phrase(300, 700),
+            userID: users[random(0, users.length)]._id,
+        });
+    }
+    await News.create(data);
+    console.log("News generating finished!\n");
+};
+
 mongoose
     .connect(process.env.DATABASE, {
         useNewUrlParser: true,
@@ -85,9 +151,14 @@ mongoose
     })
     .then(async () => {
         console.log("DB connection established!");
-        // await dropAllCollections();
-        // generateMovies();
+        await dropAllCollections();
+        await generateMovies();
         await generateMoviePersons();
+        await generateAwards();
+        // tutaj generate users
+        await generateReviews();
+        await generateComments();
+        await generateNews();
 
         console.log("ALL DATA HAS BEEN GENERATED!");
         mongoose.disconnect();

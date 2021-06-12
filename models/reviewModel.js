@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Movie = require("./movieModel");
 
 const reviewSchema = new mongoose.Schema({
-    reviewContent: {
+    content: {
         type: String,
     },
     rating: {
