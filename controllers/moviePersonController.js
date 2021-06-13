@@ -71,9 +71,7 @@ exports.deleteMoviePerson = async (req, res, next) => {
 
 exports.getPersonsByRole = async (req, res, next) => {
     try {
-        const persons = await MoviePerson.find(
-            {role: req.params.role}
-        );
+        const persons = await MoviePerson.find({ role: req.params.role });
 
         res.status(200).json({
             status: "success",
@@ -89,6 +87,12 @@ exports.getPersonMovies = async (req, res, next) => {
     try {
         const person = await MoviePerson.findById(req.params.moviePersonID);
 
+        if (!person)
+            return res.status(400).json({
+                status: "fail",
+                message: "This actor does not exist.",
+            });
+
         res.status(200).json({
             status: "success",
             results: person.movies.length,
@@ -101,17 +105,16 @@ exports.getPersonMovies = async (req, res, next) => {
 
 exports.getPersonsWithTodaysBirthday = async (req, res, next) => {
     try {
-        const today = new Date()
-        const tommorow = new Date()
-        tommorow.setDate(today.getDate() + 1)
-        
+        const today = new Date();
+        const tommorow = new Date();
+        tommorow.setDate(today.getDate() + 1);
+
         const persons = await MoviePerson.find({
             birthdate: {
                 $gte: today,
-                $lt: tommorow
-                }
-            }
-        );
+                $lt: tommorow,
+            },
+        });
 
         res.status(200).json({
             status: "success",
