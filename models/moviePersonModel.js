@@ -8,7 +8,6 @@ const moviePersonSchema = new mongoose.Schema({
     birthdate: {
         type: Date,
         required: [true, "A person must have a birthdate."],
-        ref: "birthdate",
     },
     role: {
         type: String,
