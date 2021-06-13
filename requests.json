@@ -1,0 +1,1462 @@
+{
+	"info": {
+		"_postman_id": "4fe7a9df-0b90-4570-bafc-3251a0932d1d",
+		"name": "FINAL_MOVIE_HUB_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Movies",
+			"item": [
+				{
+					"name": "Get All Movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/movies",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Top N Movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/movies/top/10",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"movies",
+								"top",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Movie",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Szklana pułapka\",\r\n    \"description\": \"Szklana pułapka (ang. Die Hard) – amerykański film sensacyjny w reżyserii Johna McTierna z 1988, pierwsza część serii o tym samym tytule.\",\r\n    \"genre\": \"comedy\",\r\n    \"date\": \"2000-01-01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/movies",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Comments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/movies/60a219e06a3b88493098d4fe/comments",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"movies",
+								"60a219e06a3b88493098d4fe",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"Bardzo dobry film polecam.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/movies/60a219e06a3b88493098d4fe/comments",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"movies",
+								"60a219e06a3b88493098d4fe",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Movie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/movies/60c4c5f5bfe1a360a05cfdea",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"movies",
+								"60c4c5f5bfe1a360a05cfdea"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Movie",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Szklana pułapka 2\",\r\n    \"description\": \"Szklana pułapka (ang. Die Hard) – amerykański film sensacyjny w reżyserii Johna McTierna z 1988, pierwsza część serii o tym samym tytule.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/movies/606f1efc8b0556360c8bbf37",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"movies",
+								"606f1efc8b0556360c8bbf37"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Movie",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/movies/60a219e06a3b88493098d4fe",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"movies",
+								"60a219e06a3b88493098d4fe"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movies Between Dates",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/awards/between/2000-01-01/2020-01-01",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"awards",
+								"between",
+								"2000-01-01",
+								"2020-01-01"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movie Awards",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/movies/60c4c5f5bfe1a360a05cfdea/awards",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"movies",
+								"60c4c5f5bfe1a360a05cfdea",
+								"awards"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\", pm.response.json().token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"nazwausera\",\r\n    \"password\": \"haslo\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\", pm.response.json().token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"nazwausera\",\r\n    \"password\": \"haslo\",\r\n    \"passwordConfirm\": \"haslo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\", pm.response.json().token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/users/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/users/60806e5e850ce33774059e96",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"60806e5e850ce33774059e96"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"przykladowy opis\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/60806e5e850ce33774059e96",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"60806e5e850ce33774059e96"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"currentPassword\": \"haslo\",\r\n    \"password\": \"nowehaslo\",\r\n    \"passwordConfirm\": \"nowehaslo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/users/updatePassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"updatePassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/users/60a3b292fb4b71186c595a56",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"60a3b292fb4b71186c595a56"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users With At Least N Comments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/users/minReviews/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"minReviews",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users With At Least N Reviews",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/users/minComments/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"minComments",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Reviews",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/users/60c62f870769ba7f27e27b87/reviews",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"60c62f870769ba7f27e27b87",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Awards",
+			"item": [
+				{
+					"name": "Get All Awards",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/awards",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"awards"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Awards By Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/awards/awardName/Oscar",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"awards",
+								"awardName",
+								"Oscar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Award",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"awardName\": \"Oscar\",\r\n    \"date\": \"2020-01-01\",\r\n    \"moviePerson\": \"60c4c601bfe1a360a05d08d7\",\r\n    \"movie\": \"60c4c5f5bfe1a360a05cfdea\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/awards",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"awards"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Award",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/awards/606f1efc8b0556360c8bbf37",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"awards",
+								"606f1efc8b0556360c8bbf37"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Award",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"Oscar\",\r\n    \"date\": \"2020-01-01\",\r\n    \"moviePerson\": \"60c4c601bfe1a360a05d08d7\",\r\n    \"movie\": \"60c4c5f5bfe1a360a05cfdea\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/awards/606f1efc8b0556360c8bbf37",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"awards",
+								"606f1efc8b0556360c8bbf37"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Awards In Period",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/movies/between/2000-01-01/2020-01-01",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"movies",
+								"between",
+								"2000-01-01",
+								"2020-01-01"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Award",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/awards/60c62f860769ba7f27e27b7a",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"awards",
+								"60c62f860769ba7f27e27b7a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "Get Comment",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/comments/60a3e13831cdd02f1811bdb7",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"comments",
+								"60a3e13831cdd02f1811bdb7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Comment",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/comments/60a3e646a76eae2d7c0232d5",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"comments",
+								"60a3e646a76eae2d7c0232d5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"Ale dobry film.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/comments/60a3e646a76eae2d7c0232d5",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"comments",
+								"60a3e646a76eae2d7c0232d5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reviews",
+			"item": [
+				{
+					"name": "Get All Reviews",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/reviews",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New Review",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"zajesuperasny!\",\r\n    \"rating\": 5,\r\n    \"movieID\": \"60a3b2b9fb4b71186c595a57\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/reviews",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n         \"content\": \"nie zajesuperasny!\",\n            \"rating\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/reviews/60c6533ded1c1a845215dcec",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"reviews",
+								"60c6533ded1c1a845215dcec"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Review",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/reviews/60c6558aed1c1a845215dced",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"reviews",
+								"60c6558aed1c1a845215dced"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Review",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/reviews/60c6558aed1c1a845215dced",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"reviews",
+								"60c6558aed1c1a845215dced"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MoviePersons",
+			"item": [
+				{
+					"name": "Get All MoviePersons",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/moviepersons",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"moviepersons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New MoviePerson",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Johnny Depp\",\r\n    \"role\": \"actor\",\r\n    \"birthdate\": \"1990-02-02\",\r\n    \"description\": \"Johnny Depp, właśc. John Christopher Depp II – amerykański aktor, scenarzysta, reżyser, producent filmowy i muzyk. Zasłynął w latach 80. dzięki roli w telewizyjnym serialu 21 Jump Street. Uwagę krytyków zwrócił tytułową kreacją w filmie Tima Burtona Edward Nożycoręki.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/moviepersons",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"moviepersons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete MoviePerson",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/moviepersons/60c3b18640fb8e804441c279",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"moviepersons",
+								"60c3b18640fb8e804441c279"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update MoviePerson",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Wybitna rola w Shreku 5.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/moviepersons/60c3b18640fb8e804441c272",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"moviepersons",
+								"60c3b18640fb8e804441c272"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Person By Role",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/moviepersons/role/actor",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"moviepersons",
+								"role",
+								"actor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Person Movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/moviepersons/60c3b18640fb8e804441c279/movies",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"moviepersons",
+								"60c3b18640fb8e804441c279",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Person Awards",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/moviepersons/60c3b18640fb8e804441c279/awards",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"moviepersons",
+								"60c3b18640fb8e804441c279",
+								"awards"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Persons With Todays Birthday",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/moviepersons/todaysBirthday",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"moviepersons",
+								"todaysBirthday"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "News",
+			"item": [
+				{
+					"name": "Create New News",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"Cristian Bale schudł 50 000 kg by zagrać samolot\",\n    \"userID\": \"60c4d9c22c17c559f82360f9\",\n    \"date\": \"2025-04-04\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/news",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"news"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All News",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/news",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"news"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One News",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/news/60c63147aa15377f2f3e3d65",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"news",
+								"60c63147aa15377f2f3e3d65"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update News",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"content\":\"zupdejcony news\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/news/60c62f8d0769ba7f27e2928c",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"news",
+								"60c62f8d0769ba7f27e2928c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/news/60c62f8d0769ba7f27e2928d",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"news",
+								"60c62f8d0769ba7f27e2928d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
