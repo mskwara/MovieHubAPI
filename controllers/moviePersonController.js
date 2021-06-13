@@ -111,8 +111,10 @@ exports.getPersonsWithTodaysBirthday = async (req, res, next) => {
 
         const persons = await MoviePerson.find({
             birthdate: {
-                $gte: today,
-                $lt: tommorow,
+                $gte: today.getDay(),
+                $gte: today.getMonth(),
+                $lt: tommorow.getDay(),
+                $lt: tommorow.getMonth(),
             },
         });
 
