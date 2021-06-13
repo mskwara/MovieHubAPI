@@ -49,21 +49,6 @@ const dropAllCollections = async () => {
     console.log("All collections have been dropped!\n");
 };
 
-const generateMovies = async () => {
-    console.log("Generating movies...");
-    const genres = ["family", "comedy", "religious", "action", "sci-fi"];
-    const data = [];
-    for (let i = 0; i < MOVIES_COUNT; i++) {
-        data.push({
-            title: phrase(1, 4),
-            description: phrase(50, 200),
-            genre: genres[random(0, genres.length)],
-            date: randomDate(new Date(1979, 0, 1), new Date()),
-        });
-    }
-    await Movie.create(data);
-    console.log("Movies generating finished!\n");
-};
 const generateMoviePersons = async () => {
     console.log("Generating movie persons...");
     const data = [];
@@ -75,23 +60,52 @@ const generateMoviePersons = async () => {
         "composer",
         "makeup artist",
     ];
-    const movies = await Movie.find();
     for (let i = 0; i < MOVIE_PERSONS_COUNT; i++) {
-        const hisMoviesSet = new Set();
-        const moviesCount = random(1, 20);
-        for (let m = 0; m < moviesCount; m++) {
-            hisMoviesSet.add(movies[random(0, movies.length)]._id);
-        }
         data.push({
             name: phrase(1, 2),
             role: roles[random(0, roles.length)],
             birthdate: randomDate(new Date(1979, 0, 1), new Date()),
             description: phrase(50, 200),
-            movies: hisMoviesSet,
         });
     }
     await MoviePerson.create(data);
     console.log("Movie persons generating finished!\n");
+};
+
+const generateMovies = async () => {
+    console.log("Generating movies...");
+    const genres = ["family", "comedy", "religious", "action", "sci-fi"];
+    const data = [];
+    const moviePersons = await MoviePerson.find();
+    for (let i = 0; i < MOVIES_COUNT; i++) {
+        const thisMovieCrewSet = new Set();
+        const crewCount = random(20, 50);
+        for (let c = 0; c < crewCount; c++) {
+            thisMovieCrewSet.add(
+                moviePersons[random(0, moviePersons.length)]._id
+            );
+        }
+        data.push({
+            title: phrase(1, 4),
+            description: phrase(50, 200),
+            genre: genres[random(0, genres.length)],
+            date: randomDate(new Date(1979, 0, 1), new Date()),
+            crew: [...thisMovieCrewSet],
+        });
+    }
+    await Movie.create(data);
+    console.log("Movies generating finished!\n");
+};
+
+const addMoviesToMoviePersons = async () => {
+    console.log("Generating movies in movie person assignment...");
+    const moviePersons = await MoviePerson.find();
+    for (const moviePerson of moviePersons) {
+        const hisMovies = await Movie.find({ crew: moviePerson._id });
+        moviePerson.movies = hisMovies;
+        await moviePerson.save();
+    }
+    console.log("Assignment generating finished!\n");
 };
 
 const generateAwards = async () => {
@@ -244,8 +258,9 @@ mongoose
         console.log("DB connection established!");
 
         await dropAllCollections();
-        await generateMovies();
         await generateMoviePersons();
+        await generateMovies();
+        await addMoviesToMoviePersons();
         await generateAwards();
         await generateUsers();
         await generateReviews();
