@@ -1,7 +1,9 @@
+const { count } = require("../models/moviePersonModel");
 const MoviePerson = require("../models/moviePersonModel");
 
 exports.createMoviePerson = async (req, res, next) => {
     try {
+        console.log(req.body.birthdate);
         const person = await MoviePerson.create(req.body);
 
         res.status(201).json({
@@ -109,15 +111,26 @@ exports.getPersonsWithTodaysBirthday = async (req, res, next) => {
         const tommorow = new Date();
         tommorow.setDate(today.getDate() + 1);
 
-        const persons = await MoviePerson.find({
-            birthdate: {
-                $gte: today.getDay(),
-                $gte: today.getMonth(),
-                $lt: tommorow.getDay(),
-                $lt: tommorow.getMonth(),
+        const persons = await MoviePerson.aggregate([
+            {
+                $project: {
+                    name: "$name",
+                    birthdate: "$birthdate",
+                    role: "$role",
+                    description: "$description",
+                    movies: "$movies",
+                    month: { $month: "$birthdate" },
+                    day: { $dayOfMonth: "$birthdate" },
+                },
             },
-        });
-
+            {
+                $match: {
+                    month: today.getMonth() + 1,
+                    day: today.getDate(),
+                },
+            },
+        ]);
+        
         res.status(200).json({
             status: "success",
             results: persons.length,
