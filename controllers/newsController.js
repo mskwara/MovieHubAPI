@@ -29,7 +29,7 @@ exports.createNews = async (req, res, next) => {
 
 exports.getNews = async (req, res, next) => {
     try {
-        const oneNews = await News.findById(req.params.NewsID);
+        const oneNews = await News.findById(req.params.newsID);
 
         res.status(200).json({
             status: "success",
@@ -43,7 +43,7 @@ exports.getNews = async (req, res, next) => {
 exports.updateNews = async (req, res, next) => {
     try {
         const oneNews = await News.findByIdAndUpdate(
-            req.params.NewsID,
+            req.params.newsID,
             req.body,
             { new: true }
         );

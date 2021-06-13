@@ -71,7 +71,7 @@ exports.deleteAward = async (req, res, next) => {
 
 exports.getAwardByName = async (req, res, next) => {
     try {
-        const awards = await Award.find({ type: req.params.name });
+        const awards = await Award.find({ awardName: req.params.name });
 
         res.status(200).json({
             status: "success",
