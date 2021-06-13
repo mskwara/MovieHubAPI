@@ -3,7 +3,7 @@ const Comment = require("../models/commentModel");
 exports.getAllComments = async (req, res, next) => {
     try {
         const comments = await Comment.find({
-            movie: req.params.movieID,
+            movieID: req.params.movieID,
         }).sort({ date: -1 });
 
         res.status(200).json({
@@ -19,7 +19,7 @@ exports.getAllComments = async (req, res, next) => {
 exports.createComment = async (req, res, next) => {
     try {
         const comment = await Comment.create({
-            text: req.body.text,
+            content: req.body.text,
             movie: req.params.movieID,
             user: req.user._id,
             date: Date.now(),
@@ -51,7 +51,7 @@ exports.updateComment = async (req, res, next) => {
     try {
         const comment = await Comment.findByIdAndUpdate(
             req.params.commentID,
-            { text: req.body.text },
+            { content: req.body.text },
             { new: true }
         );
 

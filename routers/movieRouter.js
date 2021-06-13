@@ -35,11 +35,10 @@ router.route("/:movieID/awards").get(awardController.getMovieAwards);
 
 router.route("/between/:begin/:end").get(movieController.getMoviesInPeriod);
 
-router.use(authController.protect);
 
 router
     .route("/:movieID/comments")
     .get(commentController.getAllComments)
-    .post(commentController.createComment);
+    .post(authController.protect, commentController.createComment);
 
 module.exports = router;

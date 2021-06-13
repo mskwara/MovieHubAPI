@@ -15,6 +15,10 @@ router
     );
 
 router
+    .route("/todaysBirthday")
+    .get(moviePersonController.getPersonsWithTodaysBirthday);
+
+router
     .route("/:moviePersonID")
     .get(moviePersonController.getMoviePerson)
     .patch(
@@ -35,10 +39,6 @@ router
 router
     .route("/:moviePersonID/movies")
     .get(moviePersonController.getPersonMovies);
-
-router
-    .route("/todaysBirthday")
-    .get(moviePersonController.getPersonsWithTodaysBirthday);
 
 router
     .route("/:moviePersonID/awards")
