@@ -22,6 +22,8 @@ router.route("/minComments/:number").get(userController.getUserWithNComments);
 
 router.route("/minReviews/:number").get(userController.getUserWithNReviews);
 
+router.route("/:userID/reviews").get(userController.getUserReviews);
+
 router.use(authController.restrictTo("admin"));
 
 router.route("/").get(userController.getAllUsers);

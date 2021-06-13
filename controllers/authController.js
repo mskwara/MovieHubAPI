@@ -57,7 +57,7 @@ exports.protect = async (req, res, next) => {
         }
 
         if (!token) {
-            res.status(401).json({
+            return res.status(401).json({
                 status: "fail",
                 message: "You are not logged in. Log in to get access.",
             });
@@ -94,7 +94,7 @@ exports.protect = async (req, res, next) => {
         req.user = currentUser;
         next();
     } catch (err) {
-        // console.log(err);
+        console.log(err);
         return res.status(401).json({
             status: "fail",
             message: "Authentication failed",

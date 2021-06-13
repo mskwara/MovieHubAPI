@@ -6,7 +6,7 @@ Mikołaj Bul,
 Łukasz Stachoń,
 
 Zarys projektu
-Głównym założeniem projektu jest stworzenie aplikacji opartej na bazie filmów i osób kina. Dodatkowymi możliwościami będą ocenianie, wystawianie recenzji oraz przeglądanie najnowszych wiadomości ze świata kinematografii. Każdy użytkownik aplikacji będzie mógł sprawdzać swoje indywidualne recenzje i rekomendacje, komunikować się z innymi odbiorcami poprzez zostawianie komentarzy dotyczących konkretnych filmów oraz przeglądać aktualności dotyczące filmów/aktorów/nagród itp.
+Głównym założeniem projektu jest stworzenie aplikacji opartej na bazie filmów i osób kina. Dodatkowymi możliwościami będą ocenianie, wystawianie recenzji oraz przeglądanie najnowszych wiadomości ze świata kinematografii. Każdy użytkownik aplikacji będzie mógł sprawdzać swoje indywidualne recenzje, komunikować się z innymi odbiorcami poprzez zostawianie komentarzy dotyczących konkretnych filmów oraz przeglądać aktualności dotyczące filmów/aktorów/nagród itp.
 
 W projekcie planujemy wykorzystać technologie MongoDB oraz Node.js.
 
