@@ -138,3 +138,19 @@ exports.getUserWithNReviews = async (req, res, next) => {
         console.log(err);
     }
 };
+
+
+
+exports.getUserReviews = async (req, res, next) => {
+    try {
+        const reviews = await Review.find({userID:req.params.userID});
+
+        res.status(200).json({
+            status: "success",
+            results: reviews.length,
+            reviews,
+        });
+    } catch (err) {
+        console.log(err);
+    }
+};
