@@ -59,7 +59,7 @@ exports.updateNews = async (req, res, next) => {
 
 exports.deleteNews = async (req, res, next) => {
     try {
-        await News.findByIdAndDelete(req.params.NewsID);
+        await News.findByIdAndDelete(req.params.newsID);
 
         res.status(204).json({
             status: "success",
