@@ -10,6 +10,8 @@ Głównym założeniem projektu jest stworzenie aplikacji opartej na bazie film�
 
 W projekcie planujemy wykorzystać technologie MongoDB oraz Node.js.
 
+W celu przejrzenia dokumentacji projektu należy otworzyć plik dokumentacja.pdf
+
 Instalacja:
 1. Otwórz konsolę i sprawdź wywołaj: node --version. Jeżeli zostanie wypisana wersja zainstalowanego node, nie musisz go instalować - przejdź do kroku 3.
 2. Zainstaluj node - https://nodejs.org/en/download/
