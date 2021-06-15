@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4fe7a9df-0b90-4570-bafc-3251a0932d1d",
+		"_postman_id": "7d1ba373-bd51-4a42-9b52-ebcfef0c845d",
 		"name": "FINAL_MOVIE_HUB_API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -246,13 +246,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8000/awards/between/2000-01-01/2020-01-01",
+							"raw": "localhost:8000/movies/between/2000-01-01/2020-01-01",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"awards",
+								"movies",
 								"between",
 								"2000-01-01",
 								"2020-01-01"
@@ -267,14 +267,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8000/movies/60c4c5f5bfe1a360a05cfdea/awards",
+							"raw": "localhost:8000/movies/60c67e4664316836dc31be9d/awards",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
 								"movies",
-								"60c4c5f5bfe1a360a05cfdea",
+								"60c67e4664316836dc31be9d",
 								"awards"
 							]
 						}
@@ -843,13 +843,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:8000/movies/between/2000-01-01/2020-01-01",
+							"raw": "localhost:8000/awards/between/2000-01-01/2020-01-01",
 							"host": [
 								"localhost"
 							],
 							"port": "8000",
 							"path": [
-								"movies",
+								"awards",
 								"between",
 								"2000-01-01",
 								"2020-01-01"
@@ -998,7 +998,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"content\": \"zajesuperasny!\",\r\n    \"rating\": 5,\r\n    \"movieID\": \"60a3b2b9fb4b71186c595a57\"\r\n}",
+							"raw": "{\r\n    \"content\": \"Super film polecam!\",\r\n    \"rating\": 5,\r\n    \"movieID\": \"60a3b2b9fb4b71186c595a57\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1035,7 +1035,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n         \"content\": \"nie zajesuperasny!\",\n            \"rating\": 1\n}",
+							"raw": "{\n    \"content\": \"Nie polecam tego filmu!\",\n    \"rating\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1252,7 +1252,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Person Movies",
+					"name": "Get Person's Movies",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1272,7 +1272,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Person Awards",
+					"name": "Get Person's Awards",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -1406,7 +1406,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"content\":\"zupdejcony news\"\n}",
+							"raw": "{\n    \"content\": \"zupdejcony news\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
